@@ -19,4 +19,7 @@ export const config = {
   session: {
     secretKey: required("SECRET_KEY"),
   },
+  auth: {
+    kakaoId: required("KAKAO_ID"),
+  },
 };
