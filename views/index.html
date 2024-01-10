@@ -40,15 +40,15 @@
   <body>
     <h1>{{ message }}</h1>
     <form method="post" action="/auth/signup">
-      <input type="text" name="email" placeholder="email" />
-      <input type="text" name="nickname" placeholder="nickname" />
-      <input type="password" name="password" placeholder="password" />
+      <input type="text" name="email" placeholder="email" autocomplete />
+      <input type="text" name="nickname" placeholder="nickname" autocomplete />
+      <input type="password" name="password" placeholder="password" autocomplete />
       <button class="btn">signup</button>
     </form>
     <br />
     <form method="post" action="/auth/login">
-      <input type="text" name="email" placeholder="email" />
-      <input type="password" name="password" placeholder="password" />
+      <input type="text" name="email" placeholder="email" autocomplete />
+      <input type="password" name="password" placeholder="password" autocomplete />
       <button class="btn">login</button>
       <a href="/auth/logout" class="btn">logout</a>
       <a href="/auth/kakao" class="btn">kakao</a>

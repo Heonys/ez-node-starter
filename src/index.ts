@@ -12,6 +12,7 @@ import apiRouter from "./router/api";
 import { config } from "./config";
 import { connectDB } from "./schema";
 import passportConfig from "./passport";
+import websocket from "./util/socket";
 
 const app = express();
 passportConfig();
@@ -30,7 +31,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-connectDB();
 
 app.set("view engine", "html");
 nunjucks.configure("views", {
@@ -49,6 +49,7 @@ app.use(
   })
 );
 app.use(morgan("dev"));
+
 app.use(express.static(path.resolve(__dirname, "src/public")));
 
 app.use("/auth", authRouter);
@@ -63,4 +64,9 @@ app.use((err: Error, req: Request, res: Response) => {
   res.sendStatus(500);
 });
 
-app.listen(app.get("port"));
+connectDB()
+  .then(() => {
+    const server = app.listen(app.get("port"));
+    websocket(server);
+  })
+  .catch(console.error);
