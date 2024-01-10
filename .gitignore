@@ -23,3 +23,6 @@ note.md
 *.njsproj
 *.sln
 *.sw?
+
+# Ignore .env files
+.env

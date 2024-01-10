@@ -22,4 +22,8 @@ export const config = {
   auth: {
     kakaoId: required("KAKAO_ID"),
   },
+  jwt: {
+    secretKey: required("JWT_SECRET"),
+    expiresInSec: parseInt(required("JWT_EXPIRES_SEC")),
+  },
 };

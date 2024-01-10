@@ -8,6 +8,7 @@ import nunjucks from "nunjucks";
 import session from "express-session";
 import passport from "passport";
 import authRouter from "./router/auth";
+import apiRouter from "./router/api";
 import { config } from "./config";
 import { connectDB } from "./schema";
 import passportConfig from "./passport";
@@ -41,11 +42,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(helmet());
-app.use(cors());
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
 app.use(morgan("dev"));
 app.use(express.static(path.resolve(__dirname, "src/public")));
 
 app.use("/auth", authRouter);
+app.use("/api", apiRouter);
 
 app.use("/", (req: Request, res: Response) => {
   res.render("index", { title: "ts-eznode-starter", message: "ts-eznode-starter" });

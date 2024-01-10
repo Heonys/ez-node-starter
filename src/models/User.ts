@@ -19,11 +19,11 @@ const userSchema = new Schema<UserData>({
 export const User = Mongoose.model("User", userSchema);
 
 export async function createUser(user: UserData) {
-  return new User(user).save().then((data) => data.id);
+  return new User(user).save().then((data) => data._id);
 }
 
-export async function findByUsername(name: string) {
-  return User.findOne({ name });
+export async function findByEmail(email: string) {
+  return User.findOne({ email });
 }
 
 export async function findById(id: string) {
