@@ -2,7 +2,7 @@ import type http from "http";
 import { Server, Socket } from "socket.io";
 
 export default function (server: http.Server) {
-  const io = new Server(server);
+  const io = new Server(server, { path: "/socket.io" });
 
   io.on("connection", (socket: Socket) => {
     console.log("새로운 클라이언트 접속 ip ::", socket.id);

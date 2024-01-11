@@ -3,6 +3,8 @@
   <head>
     <title>{{ title }}</title>
     <meta charset="UTF-8" />
+    <!-- Socket.io CDN delivery -->
+    <script src="/socket.io/socket.io.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       input {
@@ -53,5 +55,20 @@
       <a href="/auth/logout" class="btn">logout</a>
       <a href="/auth/kakao" class="btn">kakao</a>
     </form>
+    <h1 class="timmer"></h1>
+    <script>
+      const timmer = document.querySelector(".timmer");
+      // serverSiteEvent
+      const es = new EventSource("/sse");
+      es.onmessage = function (e) {
+        timmer.textContent = "서버시간 " + new Date(parseInt(e.data)).toLocaleString();
+      };
+      // web socket
+      const socket = io.connect("http://localhost:8080", { path: "/socket.io" });
+      socket.on("server-message", (data) => {
+        console.log(data);
+        socket.emit("client-message", "클라이언트 -> 서버 요청보냄");
+      });
+    </script>
   </body>
 </html>

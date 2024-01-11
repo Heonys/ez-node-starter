@@ -13,6 +13,7 @@ import { config } from "./config";
 import { connectDB } from "./schema";
 import passportConfig from "./passport";
 import websocket from "./util/socket";
+import serverSiteEvent from "./util/sse";
 
 const app = express();
 passportConfig();
@@ -56,6 +57,8 @@ app.use("/auth", authRouter);
 app.use("/api", apiRouter);
 
 app.use("/", (req: Request, res: Response) => {
+  // 테스트로 인라인 스크립트 사용하기 위해 추가 (보안에 취약)
+  res.setHeader("Content-Security-Policy", "script-src 'self' 'unsafe-inline'");
   res.render("index", { title: "ts-eznode-starter", message: "ts-eznode-starter" });
 });
 
@@ -68,5 +71,6 @@ connectDB()
   .then(() => {
     const server = app.listen(app.get("port"));
     websocket(server);
+    serverSiteEvent(server);
   })
   .catch(console.error);
