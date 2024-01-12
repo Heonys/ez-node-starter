@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from "express";
+import { RequestHandler } from "express";
 
-export const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
+export const isLoggedIn: RequestHandler = (req, res, next) => {
   if (req.isAuthenticated()) {
     next();
   } else {
@@ -8,7 +8,7 @@ export const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export const isNotLoggedIn = (req: Request, res: Response, next: NextFunction) => {
+export const isNotLoggedIn: RequestHandler = (req, res, next) => {
   if (!req.isAuthenticated()) {
     next();
   } else {

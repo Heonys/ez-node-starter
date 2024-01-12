@@ -1,6 +1,7 @@
 import Mongoose, { Schema } from "mongoose";
 
 export type UserData = {
+  _id?: number;
   email: string;
   nickname: string;
   password: string;

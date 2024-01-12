@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
+import { RequestHandler } from "express";
 import { getAll } from "../models/post";
 
-export async function getAllPost(req: Request, res: Response) {
+export const getAllPost: RequestHandler = async (req, res) => {
   const posts = await getAll();
   return res.status(200).json(posts);
-}
+};

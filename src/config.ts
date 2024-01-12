@@ -14,7 +14,7 @@ export const config = {
     host: required("DB_HOST"),
   },
   host: {
-    port: required("PORT", 8080),
+    port: required("PORT"),
   },
   session: {
     secretKey: required("SECRET_KEY"),
@@ -25,5 +25,13 @@ export const config = {
   jwt: {
     secretKey: required("JWT_SECRET"),
     expiresInSec: parseInt(required("JWT_EXPIRES_SEC")),
+  },
+  redis: {
+    endpoint: required("REDIS_ENDPOINT"),
+    password: required("REDIS_PASWORD"),
+  },
+  rateLimit: {
+    windowMs: 60000,
+    maxRequest: 10,
   },
 };

@@ -1,10 +1,10 @@
-import { Request, Response, NextFunction } from "express";
+import { RequestHandler } from "express";
 import passport from "passport";
 import bcrypt from "bcrypt";
 import { createUser } from "../models/user";
 import { User } from "../models/user";
 
-export const signup = async (req: Request, res: Response, next: NextFunction) => {
+export const signup: RequestHandler = async (req, res, next) => {
   const { email, nickname, password } = req.body;
   try {
     const targetUser = await User.findOne({ email });
@@ -19,8 +19,8 @@ export const signup = async (req: Request, res: Response, next: NextFunction) =>
   }
 };
 
-export const login = (req: Request, res: Response, next: NextFunction) => {
-  passport.authenticate("local", (error: Error, user: typeof User) => {
+export const login: RequestHandler = (req, res, next) => {
+  passport.authenticate("local", (error: Error, user: Express.User) => {
     if (error) {
       console.error(error);
       return next(error);
@@ -38,7 +38,7 @@ export const login = (req: Request, res: Response, next: NextFunction) => {
   })(req, res, next);
 };
 
-export const logout = (req: Request, res: Response) => {
+export const logout: RequestHandler = (req, res) => {
   req.logOut(() => {
     console.log("########## 로그아웃 ##########");
     res.redirect("/");

@@ -7,6 +7,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+coverage
+*.log
+
 node_modules
 dist
 dist-ssr
@@ -26,3 +29,4 @@ note.md
 
 # Ignore .env files
 .env
+
