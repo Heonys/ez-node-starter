@@ -1,8 +1,21 @@
 {
   "name": "ts-eznode-starter",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "A starting point for Node.js express apps with TypeScript",
   "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Heonys/ts-eznode-starter"
+  },
+  "author": "Jiheon Kim",
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "express",
+    "starter",
+    "mongoose"
+  ],
   "scripts": {
     "build-css": "shx mkdir -p dist/src/public && shx cp -r src/public/main.css dist/src/public/main.css",
     "build-ts": "tsc",
@@ -15,13 +28,9 @@
     "test:watch": "jest --watch",
     "coverage": "jest --coverage"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "bluebird": "^3.7.2",
-    "color-hash": "2",
     "compression": "^1.7.4",
     "connect-redis": "^7.1.0",
     "cookie-parser": "^1.4.6",
@@ -38,7 +47,6 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
     "morgan": "^1.10.0",
-    "multer": "^1.4.5-lts.1",
     "nunjucks": "^3.2.4",
     "passport": "^0.7.0",
     "passport-kakao": "^1.0.1",
