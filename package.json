@@ -1,5 +1,5 @@
 {
-  "name": "node",
+  "name": "ts-eznode-starter",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -17,7 +17,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "bluebird": "^3.7.2",
