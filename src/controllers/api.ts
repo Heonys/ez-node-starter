@@ -2,7 +2,7 @@ import type { Response, RequestHandler } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { User, createUser, findByEmail } from "../models/user";
-import { config } from "../config";
+import { config } from "../util/config";
 
 const jwtSecretKey = config.jwt.secretKey;
 const jwtExpiresInSec = config.jwt.expiresInSec;

@@ -1,8 +1,10 @@
 import Mongoose from "mongoose";
-import { config } from "../config";
+import bluebird from "bluebird";
+import { config } from "../util/config";
 
 export async function connectDB() {
-  return Mongoose.connect(config.db.host);
+  Mongoose.Promise = bluebird;
+  return Mongoose.connect(config.db.key);
 }
 
 Mongoose.connection.on("error", (error) => {

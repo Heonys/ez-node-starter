@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy } from "passport-kakao";
-import { config } from "../config";
+import { config } from "../util/config";
 import { User } from "../models/user";
 
 export default () => {

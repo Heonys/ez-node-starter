@@ -1,5 +1,5 @@
 import rateLimit from "express-rate-limit";
-import { config } from "../config";
+import { config } from "../util/config";
 
 export default rateLimit({
   windowMs: config.rateLimit.windowMs,

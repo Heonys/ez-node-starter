@@ -11,7 +11,7 @@ function required(key: string, defaultValue: any = undefined) {
 
 export const config = {
   db: {
-    host: required("DB_HOST"),
+    key: required("CLUSTER_KEY"),
   },
   host: {
     port: required("PORT"),

@@ -1,7 +1,8 @@
+/// <reference types="express" />
 import { UserData } from "../models/user";
 
 declare global {
   namespace Express {
-    interface User extends UserData {}
+    export interface User extends UserData {}
   }
 }

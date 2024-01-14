@@ -9,8 +9,9 @@ describe("getAllUser", () => {
       status: jest.fn(() => res),
       json: jest.fn(),
     };
+    const next: any = ()=> {};
     (User.find as jest.Mock).mockReturnValue(Promise.resolve({}));
-    await getAllUser(req, res);
-    expect(res.json).toHaveBeenCalled();
+    await getAllUser(req, res, next);
+    return expect(res.json).toHaveBeenCalled();
   });
 });
